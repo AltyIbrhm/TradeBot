@@ -30,11 +30,23 @@ cd TradeBot
 pip install -r requirements.txt
 ```
 
-3. Create a `.env` file with your Binance API credentials:
-```
-BINANCE_API_KEY=your_api_key
-BINANCE_API_SECRET=your_api_secret
-```
+3. Set up your environment:
+   - Copy `.env.example` to `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Edit `.env` and add your Binance API credentials:
+     ```
+     BINANCE_API_KEY=your_api_key
+     BINANCE_API_SECRET=your_api_secret
+     ```
+   - Optionally adjust trading parameters in `.env`:
+     ```
+     GRID_LEVELS=4
+     GRID_SPACING=0.01
+     ORDER_SIZE_USDT=12
+     TOTAL_INVESTMENT=96
+     ```
 
 ## Usage
 
@@ -50,12 +62,21 @@ python show_orders.py
 
 ## Configuration
 
-The bot can be configured by modifying the following parameters in `doge_grid_bot.py`:
+The bot can be configured in two ways:
+
+1. Through the `.env` file (recommended for sensitive settings)
+2. By modifying the following parameters in `doge_grid_bot.py`:
 
 - `GRID_LEVELS`: Number of grid levels above and below current price
 - `GRID_SPACING`: Percentage spacing between grid levels
 - `ORDER_SIZE_USDT`: Size of each order in USDT
 - `TOTAL_INVESTMENT`: Total investment amount in USDT
+
+## Security Notes
+
+- Never share your `.env` file or API credentials
+- The `.env` file is excluded from git for security
+- Use `.env.example` as a template for your configuration
 
 ## License
 
